@@ -8,6 +8,7 @@ LUSID Caching Service is a C# implementation of a generic in-memory cache with a
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
+- [Usage](#usage)
 - [Examples](#examples)
 - [Roadmap](#roadmap)
 - [Contributing](#contributing)
@@ -41,10 +42,34 @@ cd finbourne
 dotnet build
 ```
 
+## Usage
+1. Create an instance of the CacheService:
+```csharp
+var cacheServiceInstance = CacheService<int, string>.GetInstance();
+```
+2. Add or update items in the cache:
+```csharp
+cacheServiceInstance.AddOrUpdate(1, "Jhon Doe");
+```
+3. Retrieve an item from the cache:
+```csharp
+if (cacheServiceInstance.TryGetValue(1, out var value))
+    Console.WriteLine("Value for key '1': " + value);
+```
+4. Implement the eviction callback if needed:
+```csharp
+private static void EvictionCallback(TKey key, TValue value)
+{
+    Console.WriteLine($"Evicted: Key='{key}', Value='{value}'");
+}
+```
+
 ## Examples
+
 Check the [Console App](https://github.com/raphaelswk/finbourne/blob/main/LUSID.Presentation.ConsoleApp/Program.cs) or the [CacheServiceTests](https://github.com/raphaelswk/finbourne/blob/main/LUSID.Services.Tests/UnitTests/CacheServiceTests.cs) files for usage examples and test cases.
 
 ## Roadmap
+
 Some of the possible future implementations that can be done on the project:
 - Turn it into a Nuget Package
 - Implement Load Tests
@@ -52,6 +77,7 @@ Some of the possible future implementations that can be done on the project:
 - EvictionCallback - Perform additional actions on eviction, e.g., logging, cleanup, calling a messaging service or API, Email etc.)
 
 ## Contributing
+
 Contributions are welcome! If you find any issues or have improvements, feel free to open a pull request.
 
 ## License

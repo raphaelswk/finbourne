@@ -32,7 +32,7 @@ namespace LUSID.Presentation.ConsoleApp
             if (cacheServiceInstance1.TryGetValue(2, out value))
                 Console.WriteLine("Value for key '2': " + value);
             else
-                Console.WriteLine("Key 'one' not found in the cache.");
+                Console.WriteLine("Key '2' not found in the cache.");
         }
     }
 }
