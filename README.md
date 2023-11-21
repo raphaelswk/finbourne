@@ -37,7 +37,7 @@ Our LUSID Caching Service is designed to handle large volumes of data efficientl
 Clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/yourusername/LRUCache.git
+git clone https://github.com/raphaelswk/finbourne.git
 cd finbourne
 dotnet build
 ```
